@@ -3,7 +3,8 @@ declare(strict_types = 1);
 
 namespace App\Intl;
 /*
- * This class is both a Collator for the German 'de_DE' locale and a predicate object
+ * This class extends the built-in PHP class Collator to provide collation for the German
+ * 'de_DE' locale so string with German characters can be compared. It is also a predicate object
  * that overloads the binary function call operator (using PHP's __invoke magic method).
  *
  * It can be passed to binary_search as the comparator parameter.
