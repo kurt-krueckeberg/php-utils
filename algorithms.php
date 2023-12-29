@@ -24,32 +24,30 @@ declare(strict_types = 1);
  *  binary_search($keys, 'ächzen', $closure); 
  *
  */
-function binary_search_(array $a, int $first, int $last, mixed $key, callable $comparator)
+function binary_search_(array $a, int $lo, int $hi, mixed $key, callable $comparator) : int
 {
-    $lo = $first; 
-    $hi = $last - 1;
+    $hi = $hi - 1;
 
     while ($lo <= $hi) {
 
-        $mid = (int)(($hi - $lo) / 2) + $lo;
+        $mid = $lo + (int)(($hi - $lo) / 2);
    
         $cmp = $comparator($a[$mid], $key);
 
-        if ($cmp < 0) 
-            
+        if ($cmp < 0)             
             $lo = $mid + 1;
 
         elseif ($cmp > 0) 
-
             $hi = $mid - 1;
 
         else 
-
-            return true; // OR: {true, $mid};
+            return $mid; // OR: {true, $mid};
         
     }
-    return false;
+    return -1;
 }
+
+
 
 function binary_search(array $a, string $key, callable $comparator)
 {
