@@ -47,8 +47,6 @@ function binary_search_(array $a, int $lo, int $hi, mixed $key, callable $compar
     return -1;
 }
 
-
-
 function binary_search(array $a, string $key, callable $comparator)
 {
   return binary_search_($a, 0, count($a), $key, $comparator); 
