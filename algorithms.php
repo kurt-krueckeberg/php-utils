@@ -28,7 +28,9 @@ declare(strict_types = 1);
 function binary_search(array $a, string $key)
 {
   $comparator = function(string $left, string $right) { return strcmp($left, $right); };
-    
+  
+  $lo = 0;
+
   $hi = count($a) - 1;
 
     while ($lo <= $hi) {
