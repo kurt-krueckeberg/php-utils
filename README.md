@@ -8,6 +8,13 @@
   * 
 ## Summary of Tools
 
+### Algorithms
+
+[algorithms.php](./algorithms.php) has:
+
+* `GermanCollator` class. See the PHP built-in [Collator class](https://www.php.net/manual/en/class.collator.php)
+* `binary_search` - a binary search that takes a `Collator`-derived class that implements `__invoke(string $left, $right)`.
+
 ### DOM and XPath
 
 * [Parsing HTML files with DOMDocument and DOMXpath]()https://www.the-art-of-web.com/php/html-xpath-query/)
