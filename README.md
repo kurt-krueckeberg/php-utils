@@ -12,8 +12,12 @@
 
 [algorithms.php](./algorithms.php) has:
 
-* `GermanCollator` class. See the PHP built-in [Collator class](https://www.php.net/manual/en/class.collator.php)
-* `binary_search` - a binary search that takes a `Collator`-derived class that implements `__invoke(string $left, $right)`.
+* Generic `binary_search` - a binary search that takes a PHP [callable]()https://www.php.net/manual/en/language.types.callable.php type parameter
+
+It also shows how to doing language-specific sorting and comparisions using:
+
+*  a PHP [Collator](https://www.php.net/manual/en/class.collator.php)-derived class that implements `__invoke(string $left, $right)`.
+*  a PHP [anonymous function](https://www.php.net/manual/en/functions.anonymous.php)
 
 ### DOM and XPath
 
@@ -24,23 +28,20 @@
 
 FileReadIterator allows a file whose name is passed in the constructor to be used in foreach loops by implementing the \Iterator interface. It is strictly just a read-only forward iterator. 
 
-### PHP Data Structures Extension
+### Articles for Understanding the PHP Data Structures Extension
 
 * [Efficient Data Structures for PHP](https://medium.com/@rtheunissen/efficient-data-structures-for-php-7-9dda7af674cd)
 
-### Polyfill Extension
+### Various Utlities and Demo Code
 
-See it on [github](https://github.com/php-ds/polyfill)
+#### Recursive Regex File Find
 
-[Github Repository](https://github.com/php-ds/ext-ds)
+Recursive file find [code](https://github.com/kurt-krueckeberg/php-utils/blob/master/recursive-file-find-with-regex.php) that shows how to 
+use the PHP [RecursiveIteratorIterator](https://www.php.net/manual/en/class.recursiveiteratoriterator.php).
 
-Note: To restart the PHP Fascgi process, do: 
+#### [html2utf.php](./html2utf.php)
 
-    sudo systemctl restart php8.0-fpm
-
-### html2utf.php
-
-Converts all .html files in the current directory to unix unicode by:
+[html2utf.php](./html2utf.php) converts all .html files in the current directory to unix unicode by:
 
 * calling dos2unx
 * calling `iconv` to convert from ISO-8859-1 to UTF-8.
