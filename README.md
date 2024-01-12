@@ -21,7 +21,7 @@ It also shows how to doing language-specific sorting and comparisions using:
 
 ### DOM and XPath
 
-* [Parsing HTML files with DOMDocument and DOMXpath]()https://www.the-art-of-web.com/php/html-xpath-query/)
+* [Parsing HTML files with DOMDocument and DOMXpath](https://www.the-art-of-web.com/php/html-xpath-query/)
 * [DOCXPath](https://www.phpdocx.com/documentation/introduction/docxpath) -- not free, but good description of desirable methods.
 
 ### FileReadIterator class 
