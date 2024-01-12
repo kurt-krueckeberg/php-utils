@@ -2,8 +2,8 @@
 
 ## DOM and XPath
 
-* https://www.the-art-of-web.com/php/html-xpath-query/
-* https://www.phpdocx.com/documentation/introduction/docxpath
+* [Parsing HTML files with DOMDocument and DOMXpath]()https://www.the-art-of-web.com/php/html-xpath-query/)
+* [DOCXPath](https://www.phpdocx.com/documentation/introduction/docxpath) -- not free, but good description of desirable methods.
 
 ## FileReadIterator class 
 
