@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+/*
+ Echos the table's cell content of each of its rows.
+*/
 
 function get_tableRows(string $file)
 {
