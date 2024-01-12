@@ -2,7 +2,7 @@
 declare(strict_types = 1);
 
 /*
- * bainry_search()
+ * binary_search(array $, mixed $key, callable $functor)
  *
  * input: 
  * $comparator can be either a lambda or a binary predicate object (like GermanComparator below).
@@ -25,10 +25,8 @@ declare(strict_types = 1);
  *
  */
 
-function binary_search(array $a, string $key)
-{
-  $comparator = function(string $left, string $right) { return strcmp($left, $right); };
-  
+function binary_search(array $a, mixed $key, callable $functor)
+{   
   $lo = 0;
 
   $hi = count($a) - 1;
@@ -37,7 +35,7 @@ function binary_search(array $a, string $key)
 
         $mid = $lo + (int)(($hi - $lo) / 2);
    
-        $cmp = $comparator($a[$mid], $key);
+        $cmp = $functor($a[$mid], $key);
 
         if ($cmp < 0)             
             $lo = $mid + 1;
@@ -52,22 +50,18 @@ function binary_search(array $a, string $key)
 }
 
 /*
- * This class is both a Collator for the German 'de_DE' locale and a predicate object
- * (that uses PHP's __invoke magic method to overload the binary function call operator).
- *
- * It can be passed to binary_search as the comparator parameter in one of two ways.
- *
- *   1. As a lambda/closure method:
- *  
- *     $closure = function (string $str1, string $str2) use ($germanComp) { return $germanComp->compare($str1, $str2); };
- *     binary_search($str_array, $str_needle, $closure);
- * 
- *   2: As a binary function object:
- * 
- *     binary_search($str_array, $str_needle, new GermanComparator);
- *
- */
+ Callable for doing German string comparision. They can also be used for sorting 
+ arrays of German strings.
+ 
+ You can create a German language string comparison function object two ways:
+ 
+   1. Define the GermanCompartor class below that uses PHP's __invoke magic method to supply an
+     overloaded binary function call operator, i.e. one that take left and right string parameter.
 
+   2. Create a closure  
+  
+ Method 1: GermanCompartor supports a function object for doing German string comparisons.
+ */
 class GermanComparator extends Collator {
 
    public function __construct()
@@ -80,3 +74,13 @@ class GermanComparator extends Collator {
        return $this->compare($str1, $str2); 
    }
 }
+/*
+Method 2: a closure/lambda that does the same thing
+ */
+
+$de_collator = new Collator('de_DE');
+
+$de_compare = function(string $left, string $right) use($de_collator) {
+    return $de_collator->compare($left, $right);
+}
+ 
